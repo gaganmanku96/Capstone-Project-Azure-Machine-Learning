@@ -13,12 +13,12 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
 from azureml.data.dataset_factory import TabularDatasetFactory
 
-dataset_url = "https://raw.githubusercontent.com/gaganmanku96/Capstone-Project-Azure-Machine-Learning/master/students_placement_data.csv.csv"
+dataset_url = "https://raw.githubusercontent.com/gaganmanku96/Capstone-Project-Azure-Machine-Learning/master/students_placement_data.csv"
 
 ds = TabularDatasetFactory.from_delimited_files(dataset_url)
 # ds = pd.read_csv('students_placement_data.csv')
 
-# ds = ds.to_pandas_dataframe()
+ds = ds.to_pandas_dataframe()
 
 def get_data(dataframe):
     dataframe.drop('roll_no', axis=1, inplace=True)
@@ -26,12 +26,12 @@ def get_data(dataframe):
     section_mapping = {'A': 0, 'B': 1}
     placement_registeration_mapping = {'NO': 0, 'YES': 1}
     placed_notplaced_mapping = {'Not placed': 0, 'Placed': 1}
-    dataframe['gender'] = dataframe['gender'].map(male_female_mapping)
-    dataframe['section'] = dataframe['section'].map(section_mapping)
-    dataframe['registered_for_placement_training'] = dataframe['registered_for_placement_training'].map(placement_registeration_mapping)
-    dataframe['placement_status'] = dataframe['placement_status'].replace(placed_notplaced_mapping)
 
-    dataframe = dataframe.fillna(dataframe.median())
+    dataframe['gender'] = dataframe['gender'].apply(lambda x: 1 if str(x) == 'M' else 0)
+    dataframe['section'] = dataframe['section'].apply(lambda x: 1 if str(x) == 'A' else 0)
+    dataframe['registered_for_placement_training'] = dataframe['registered_for_placement_training'].apply(lambda x: 1 if str(x) == 'YES' else 0)
+    dataframe['placement_status'] = dataframe['placement_status'].apply(lambda x: 1 if str(x) == 'Placed' else 0)
+
 
     y = dataframe.pop('placement_status')
     x = dataframe

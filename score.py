@@ -7,7 +7,7 @@ import pandas as pd
 
 def init():
     global model
-    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'automl_best_model.pkl')
+    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'automl_model.pkl')
     with open(model_path, 'rb') as f:
         model = pickle.load(f)
 
