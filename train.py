@@ -22,16 +22,11 @@ ds = ds.to_pandas_dataframe()
 
 def get_data(dataframe):
     dataframe.drop('roll_no', axis=1, inplace=True)
-    male_female_mapping = {'M': 0, 'F': 1}
-    section_mapping = {'A': 0, 'B': 1}
-    placement_registeration_mapping = {'NO': 0, 'YES': 1}
-    placed_notplaced_mapping = {'Not placed': 0, 'Placed': 1}
 
     dataframe['gender'] = dataframe['gender'].apply(lambda x: 1 if str(x) == 'M' else 0)
     dataframe['section'] = dataframe['section'].apply(lambda x: 1 if str(x) == 'A' else 0)
     dataframe['registered_for_placement_training'] = dataframe['registered_for_placement_training'].apply(lambda x: 1 if str(x) == 'YES' else 0)
     dataframe['placement_status'] = dataframe['placement_status'].apply(lambda x: 1 if str(x) == 'Placed' else 0)
-
 
     y = dataframe.pop('placement_status')
     x = dataframe
@@ -51,12 +46,13 @@ def main():
 
     args = parser.parse_args()
 
-    run.log("Regularization Strength:", np.float(args.C))
-    run.log("Max iterations:", np.int(args.max_iter))
+    run.log("Number of estimators:", np.float(args.n_est))
+    run.log("Min Samples split:", np.int(args.min_samples_split))
 
-    model = RandomForestClassifier(n_estimators=args.n_est,min_samples_split=args.min_samples_split).fit(train_x, train_y)
+    model = RandomForestClassifier(n_estimators=args.n_est, min_samples_split=args.min_samples_split).fit(train_x, train_y)
     accuracy = model.score(test_x, test_y)
     run.log("Accuracy", np.float(accuracy))
+    joblib.dump(value=model,filename="./hyperdrive_model.pkl")
 
 
 if __name__ == '__main__':
