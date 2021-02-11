@@ -3,7 +3,7 @@ roll_no,gender,section,SSC_percentage,inter_diploma_percentage,undergraduation_p
 2,F,A,89,92.4,71.45,0,YES,Placed
 3,F,A,67,68,45.26,13,YES,Not placed
 4,M,A,71,70.4,36.47,17,YES,Not placed
-5,M,A,,65.5,42.52,17,YES,Not placed
+5,M,A,75,65.5,42.52,17,YES,Not placed
 6,M,A,81.26,68,62.2,6,YES,Not placed
 7,M,A,71,56.5,33.77,20,YES,Not placed
 8,F,A,84.83,79.3,61.02,3,NO,Not placed
@@ -55,7 +55,7 @@ roll_no,gender,section,SSC_percentage,inter_diploma_percentage,undergraduation_p
 54,M,A,72,84.5,67.21,0,YES,Placed
 55,M,A,85.5,83.6,60.35,3,YES,Not placed
 56,F,A,87.33,92,70.85,0,NO,Placed
-57,M,A,64,56.7,31.2,22,,Not placed
+57,M,A,64,56.7,31.2,22,NO,Not placed
 58,M,A,72.5,67.8,52.31,5,YES,Not placed
 59,F,A,90.3,93.7,77.95,0,YES,Placed
 60,F,A,90.66,94.7,81.1,0,YES,Placed
