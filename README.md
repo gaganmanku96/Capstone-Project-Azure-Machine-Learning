@@ -3,8 +3,6 @@
 ## Introduction
 Placement plays an important role in the life of a student because it usually gives him a moral boost. In this project, we'll predict whether a student will get placed or not based on several factors like gender, section, no of backlogs, whether he applied for placement training or not. This can help the College/University Management to focus on certain students.
 
-## Project Setup
-
 ## Dataset
 The dataset contains 8 different features that we'll use to make the prediction
 
@@ -35,7 +33,17 @@ These were the parameters of the best model trained by AutoML.
 ![Best Model Paramaters](images/automl_best_run_parameters.PNG)
 
 ## HyperDrive
+In HyperDrive, we choose RandomForest as our algorithm and the type of task was classification. The paramters we choose for hyperdrive were bandit policy for early termination (for poor performing runs), Accuracy as the primary metric and Sklearn estimator. We used RandomParameter sampling to search for best parameters.
 
+We got an accuracy of 86% with the hyperdrive and the parameters of the best model were
+```
+n_estimators: 10
+min_samples_split: 3
+```
+![HyperDrive run started](images/hyperdrive_model_run.PNG)
+![HyperDrive run success](images/hyperdrive_model_run_success.PNG)
+
+![HyperDrive Best model](images/hyperdrive_best_model_2.PNG)
 
 ## Model Deployment
 The accuracy was higher in case of AutoML model. So, we decided to deploy the VotingEnsemble model produced by AutoML. The AutoML model was saved using pickle.
