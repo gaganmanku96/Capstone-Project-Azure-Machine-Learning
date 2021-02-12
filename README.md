@@ -64,6 +64,14 @@ n_estimators : This is the number of trees you want to build before taking the m
 min_samples_split: The minimum number of samples required to split an internal node
 ```
 
+These are the values we choose for hyperparmeter tuning
+```
+n_estimators: choice(10, 20, 30, 40, 50)
+min_samples_split: choice(1, 2, 3)
+```
+> where choice picks one value out of the given options.
+
+
 We got an accuracy of 86% with the hyperdrive and the parameters of the best model were
 ```
 n_estimators: 10
@@ -88,6 +96,10 @@ After the model has been deployed we can also check if it is in health state.
 
 After the model was deployed, we created an input payload to test the result of the Model.
 ![Model Response](images/automl_deploy_response.PNG)
+
+Future Work
+1. Experiment with boosting models like Xgboost, LightGBM and try Bayesian Hyperparamter tuning.
+2. Larger dataset can be used to increase data quality.
 
 ## Screen Recording
 https://youtu.be/ErjdOiHvfbM
