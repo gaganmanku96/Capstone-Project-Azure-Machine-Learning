@@ -6,6 +6,9 @@ Placement plays an important role in the life of a student because it usually gi
 ## Dataset
 The dataset contains 8 different features that we'll use to make the prediction
 
+This is an general overview of the dataset.
+![Dataset Overview](images/dataset_overview.PNG)
+
 The features are
 1. Roll_no: The roll number of the student (This is not used in model training as it is unique for every student). 
 2. Gender: The gender of the student (M/F).
@@ -20,6 +23,9 @@ The features are
 The dataset had some categorical columns which were converted to numerical using lambda fuctions.
 
 Using the first 8 features we were prediction the value of Placement_status (whether the student got placed or not). 
+
+The dataset was accessed by providing the URL in the TabularDatasetFactory method present in azureml package.
+![Access dataset](images/accessing_dataset.PNG)
 
 ## AutoML
 In AutoML, we set the task to 'classification' and the primary_metric was 'Accuracy'. We enabled early stopping and the experiment timeout was set to 30min to reduce the computation cost. The cross_validation parameter was set to 3 and lastly max_concurrent_iterations was set to 3 to run iterations in parallel to improve efficiency.
@@ -52,6 +58,9 @@ The model was deployed used Azure Container Instance Webservice and authenticati
 
 The model was successfully deployed and can be seen in the below screenshot.
 ![AutoML model deployed](images/automl_model_deployed.PNG) 
+
+After the model has been deployed we can also check if it is in health state.
+![Deployed model healthy state](images/deployment.PNG)
 ![AutoML model URI and keys](images/deployment_2.PNG)
 
 After the model was deployed, we created an input payload to test the result of the Model.
