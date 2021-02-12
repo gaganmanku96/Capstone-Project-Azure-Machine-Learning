@@ -35,3 +35,20 @@ These were the parameters of the best model trained by AutoML.
 ![Best Model Paramaters](images/automl_best_run_parameters.PNG)
 
 ## HyperDrive
+
+
+## Model Deployment
+The accuracy was higher in case of AutoML model. So, we decided to deploy the VotingEnsemble model produced by AutoML. The AutoML model was saved using pickle.
+
+The model was deployed used Azure Container Instance Webservice and authentication was enabled. The environment that we used was 'Azure-AutoML', it installed all the packages that we needed to run the model. A scoring script was also present which worked like a prediction method. Any input payload was send to this score function and it would return the result.
+
+The model was successfully deployed and can be seen in the below screenshot.
+![AutoML model deployed](images/automl_model_deployed.PNG) 
+![AutoML model URI and keys](images/deployment_2.PNG)
+
+After the model was deployed, we created an input payload to test the result of the Model.
+![Model Response](images/automl_deploy_response.PNG)
+
+## Screen Recording
+https://youtu.be/ErjdOiHvfbM
+
